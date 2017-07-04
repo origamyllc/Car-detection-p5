@@ -12,15 +12,13 @@ The goals / steps of this project are the following:
 
 #### Histogram of Oriented Gradients (HOG)
 
-The code for this step is contained in the first code cell of the IPython notebook  in car-detection.ipynb
-it consists of the following steps 
+To calculate a HOG descriptor, we need to first calculate the horizontal and vertical gradients; after all, we want to calculate the histogram of gradients .The code for this step is contained in the first code cell of the IPython notebook  in car-detection.ipynb it consists of the following steps 
 
     *  Create a list to append feature vectors to
     *  Read in each one by one
     *  Apply color conversion if other than 'RGB'
     *  Do hog transform on the image 
-
-To calculate a HOG descriptor, we need to first calculate the horizontal and vertical gradients; after all, we want to calculate the histogram of gradients
+    *  Split up data into randomized training and test sets
 
 ![alt text][image2]
 

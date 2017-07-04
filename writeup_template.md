@@ -18,9 +18,14 @@ To calculate a HOG descriptor, we need to first calculate the horizontal and ver
     *  Read in each one by one
     *  Apply color conversion if other than 'RGB'
     *  Do hog transform on the image 
-    *  Split up data into randomized training and test sets
+  
+##### Feature extraction parameters
+colorspace = 'YUV' # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
+orient = 11
+pix_per_cell = 16
+cell_per_block = 2
+hog_channel = 'ALL' # Can be 0, 1, 2, or "ALL"
 
-![alt text][image2]
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 

@@ -12,14 +12,15 @@ The goals / steps of this project are the following:
 
 #### Histogram of Oriented Gradients (HOG)
 
-To calculate a HOG descriptor, we need to first calculate the horizontal and vertical gradients; after all, we want to calculate the histogram of gradients .The code for this step is contained in the first code cell of the IPython notebook  in car-detection.ipynb it consists of the following steps 
+To calculate a HOG descriptor, we need to first calculate the horizontal and vertical gradients; after all, we want to calculate the histogram of gradients .The code for this step is contained in the first code cell of the IPython notebook  in car-detection.ipynb  it consists of the following steps 
 
     *  Create a list to append feature vectors to
     *  Read in each one by one
     *  Apply color conversion if other than 'RGB'
     *  Do hog transform on the image 
  
- to do the hog transform i chose the following parameters
+We can specify the number of orientations, pixels_per_cell , and cells_per_block for computing the HOG features of a single channel of an image. The number of orientations is the number of orientation bins that the gradients of the pixels of each cell will be split up in the histogram. The pixels_per_cells is the number of pixels of each row and column per cell over each gradient the histogram is computed. The cells_per_block specifies the local area over which the histogram counts in a given cell will be normalized. Having this parameter is said to generally lead to a more robust feature set. We can also use the normalization scheme called transform_sqrt which is said to help reduce the effects of shadows and illumination variations. To do the hog transform I chose the following parameters
+
 ##### Feature extraction parameters
      colorspace = 'YUV' # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
      orient = 11

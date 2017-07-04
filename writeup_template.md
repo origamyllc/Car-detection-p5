@@ -28,7 +28,7 @@ We can specify the number of orientations, pixels_per_cell , and cells_per_block
      cell_per_block = 2
      hog_channel = 'ALL' # Can be 0, 1, 2, or "ALL"
      
-##### Training the classifier 
+#### Training the classifier 
 Extract the  Hog features for a number of for a number of car and non car images and Split up data into randomized training and test sets there were a  total of 8,792 samples of vehicle images and 8,968 samples of non-images. This data set is preselected by Udacity with images from the GTI vehicle image database and the KITTI vision benchmark suite. As a safety measure, we use a scaler to transform the raw features before feeding them to our classifier for training or predicting, reducing the chance of our classifier to behave badly. I used a SVC to classify the images .
 
-##### Sliding Window search 
+#### Sliding Window search 

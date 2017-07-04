@@ -26,7 +26,8 @@ To calculate a HOG descriptor, we need to first calculate the horizontal and ver
      pix_per_cell = 16
      cell_per_block = 2
      hog_channel = 'ALL' # Can be 0, 1, 2, or "ALL"
-
+     
+##### Feature extraction parameters
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 

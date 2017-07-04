@@ -28,7 +28,7 @@ We can specify the number of orientations, pixels_per_cell , and cells_per_block
      cell_per_block = 2
      hog_channel = 'ALL' # Can be 0, 1, 2, or "ALL"
      
-##### Feature extraction parameters
+##### Training the classifier 
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 

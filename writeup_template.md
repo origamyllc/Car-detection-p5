@@ -11,6 +11,7 @@ The goals / steps of this project are the following:
 
 #### Prepping the data
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
+
 ![png](./output_images/output_3_1.png)
 
 #### Histogram of Oriented Gradients (HOG)

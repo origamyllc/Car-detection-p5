@@ -87,7 +87,7 @@ Using `YCrCb` color space, the number of false positives were stemmed.
 #### C. Heatmaps and Label Detection
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
 
-![png](./output_images/heatmap1.png)
+![png](./output_images/heatmap1.pmg.png)
 ![png](./output_images/heatmap2.png)
 
 ### 4. Search Optimization (Restricted Search)

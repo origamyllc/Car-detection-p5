@@ -12,8 +12,8 @@ The goals / steps of this project are the following:
 #### Prepping the data
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
-![png](./output_images/output_3_1.png)
-
+![png](./output_images/cars.png)
+![png](./output_images/notcars.png)
 #### Histogram of Oriented Gradients (HOG)
 
 To calculate a HOG descriptor, we need to first calculate the horizontal and vertical gradients; after all, we want to calculate the histogram of gradients .The code for this step is contained in the first code cell of the IPython notebook  in car-detection.ipynb  it consists of the following steps 

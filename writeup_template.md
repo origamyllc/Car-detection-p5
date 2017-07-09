@@ -46,6 +46,56 @@ We can get a subregion of video frame and run that classifier there to see if th
 
 ![png](./output_images/slidingwindow.png)
 
+
+### 2. Multi-Scale Search
+
+The scale for the multi-window search and overlap to be considered was decided emperically.
+
+The multi-scale window approach prevents calculation of feature vectors for the complete image and thus helps in speeding up the process. The following scales were emperically decided each having a overlap of `75%` (decided by `cells_per_step` which is set as `2`):
+
+
+Scale 1:
+```
+ystart = 380
+ystop = 480
+scale = 1
+```
+
+Scale 2:
+```
+ystart = 400
+ystop = 600
+scale = 1.5
+```
+
+Scale 3:
+```
+ystart = 500
+ystop = 700
+scale = 2.5
+```
+
+
+### 3. Avoiding False Positives and Label Detection
+
+#### A. Hard Data Mining
+Falsely detected patch were explicitly used to create a negative example added to training set. The false positives were avoided by using wrongly classified examples and adding it to the training dataset.
+
+#### B. Feature Selection
+Using `YCrCb` color space, the number of false positives were stemmed.
+
+#### C. Heatmaps and Label Detection
+I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+
+![png](./output_images/heatmap1.png)
+![png](./output_images/heatmap2.png)
+
+### 4. Search Optimization (Restricted Search)
+
+The search was optimized by processing complete frames only once every 10 frames, and by having a restricted search in the remaining frames. The restricted search is performed by appending 50 pixel to the heatmap found in last three frames. Look at the implementation of `find_cars` method of `VehicleDetector` in `./utils/vehicle_detector.py`.
+
+![png](./output_images/finalresult.png)
+
 ### Discussion
 For this project, I wrote a software pipeline to detect and track vehicles from a video of a highway. To do this, I have extracted HOG features of previously collected data and fed them to a Linear Support Vector Machine classifier algorithm. I used a sliding window technique to check if subregions of a frame contain vehicles. Then I used heat maps over multiple consecutive frames to weed out transient false positives and gain confidence over multiple detection on the same location.
 HOG features of images in HLS and YUV color formats are good features to be used for classifying vehicles. However, extracting 1,188 YUV HOG features is extremely faster than extracting 7,056 HLS HOG features so better use YUV (with 16 x 16 pixels per cell and 11 orientations) over HLS (with 8 x 8 pixels per cell and 12 orientations).

@@ -111,4 +111,4 @@ Another issue with the current implementation is that in the video processing pi
 YOLO takes a completely different approach. It’s not a traditional classifier that is repurposed to be an object detector. YOLO actually looks at the image just once (hence its name: You Only Look Once) Each of these cells is responsible for predicting 5 bounding boxes. A bounding box describes the rectangle that encloses an object.
 
 YOLO also outputs a confidence score that tells us how certain it is that the predicted bounding box actually encloses some object. This score doesn’t say anything about what kind of object is in the box, just if the shape of the box is any good.
-
+The confidence score for the bounding box and the class prediction are combined into one final score that tells us the probability that this bounding box contains a specific type of object. 

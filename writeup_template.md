@@ -100,6 +100,17 @@ The search was optimized by processing complete frames only once every 10 frames
 For this project, I wrote a software pipeline to detect and track vehicles from a video of a highway. To do this, I have extracted HOG features of previously collected data and fed them to a Linear Support Vector Machine classifier algorithm. I used a sliding window technique to check if subregions of a frame contain vehicles. Then I used heat maps over multiple consecutive frames to weed out transient false positives and gain confidence over multiple detection on the same location.
 HOG features of images in HLS and YUV color formats are good features to be used for classifying vehicles. However, extracting 1,188 YUV HOG features is extremely faster than extracting 7,056 HLS HOG features so better use YUV (with 16 x 16 pixels per cell and 11 orientations) over HLS (with 8 x 8 pixels per cell and 12 orientations).
 #### Some hypothetical cases that would cause pipeline to fail are 
+This approach works but it’s obviously going to be very slow, since you need to run the classifier many times. A slightly more efficient approach is to first predict which parts of the image contain interesting information — so-called region proposals — and then run the classifier only on these regions. The classifier has to do less work than with the sliding windows but still gets run many times over.
+
 The current implementation using the SVM classifier works well for the tested images and videos, and this is mainly because the images and videos are recorded in a similar environment. Testing this classifier with a very different environment will not have similar good results. A more robust classifier using deep learning and Convolutional Neural Networks will generalize better to unknown data.
 
 Another issue with the current implementation is that in the video processing pipeline subsequent frames are not considered. Keeping a heat map between consecutive frames will discard false positives better.
+
+#### Some alternative approaches are 
+
+### YOLO 
+
+YOLO takes a completely different approach. It’s not a traditional classifier that is repurposed to be an object detector. YOLO actually looks at the image just once (hence its name: You Only Look Once) Each of these cells is responsible for predicting 5 bounding boxes. A bounding box describes the rectangle that encloses an object.
+
+YOLO also outputs a confidence score that tells us how certain it is that the predicted bounding box actually encloses some object. This score doesn’t say anything about what kind of object is in the box, just if the shape of the box is any good.
+The confidence score for the bounding box and the class prediction are combined into one final score that tells us the probability that this bounding box contains a specific type of object. 
